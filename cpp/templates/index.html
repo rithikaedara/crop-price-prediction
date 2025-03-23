@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Price Prediction System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>Crop Price Prediction System</h1>
+            <p class="lead">Estimate future crop prices based on various factors</p>
+        </header>
+        
+        <div class="row">
+            <!-- Input Form -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h4>Input Parameters</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="prediction-form">
+                            <div class="mb-3">
+                                <label for="crop_name" class="form-label">Crop Name</label>
+                                <select class="form-select" id="crop_name" required>
+                                    <option value="" selected disabled>Select crop</option>
+                                    {% for crop in options.crop_name %}
+                                    <option value="{{ crop }}">{{ crop }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="region" class="form-label">Region/State</label>
+                                <select class="form-select" id="region" required>
+                                    <option value="" selected disabled>Select region</option>
+                                    {% for region in options.region %}
+                                    <option value="{{ region }}">{{ region }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="season" class="form-label">Season</label>
+                                <select class="form-select" id="season" required>
+                                    <option value="" selected disabled>Select season</option>
+                                    {% for season in options.season %}
+                                    <option value="{{ season }}">{{ season }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="rainfall" class="form-label">Rainfall (mm)</label>
+                                <input type="number" class="form-control" id="rainfall" min="0" max="5000" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="soil_type" class="form-label">Soil Type</label>
+                                <select class="form-select" id="soil_type" required>
+                                    <option value="" selected disabled>Select soil type</option>
+                                    {% for soil in options.soil_type %}
+                                    <option value="{{ soil }}">{{ soil }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="market_demand" class="form-label">Market Demand</label>
+                                <select class="form-select" id="market_demand" required>
+                                    <option value="" selected disabled>Select demand level</option>
+                                    {% for demand in options.market_demand %}
+                                    <option value="{{ demand }}">{{ demand }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success w-100">Predict Price</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results Dashboard -->
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4>Prediction Results</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="results-container" class="d-none">
+                            <div class="alert alert-success mb-4">
+                                <h4>Predicted Price: ₹<span id="predicted-price">0.00</span> per quintal</h4>
+                                <p>Confidence Level: <span id="confidence-level">Medium</span></p>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Price Trend</h5>
+                                    <canvas id="price-chart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Factor Importance</h5>
+                                    <canvas id="importance-chart"></canvas>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Insights</h5>
+                                    <div id="insights" class="p-3 bg-light rounded">
+                                        <p>Loading insights...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="loading" class="text-center d-none">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p>Calculating prediction...</p>
+                        </div>
+                        
+                        <div id="initial-message" class="text-center p-5">
+                            <img src="{{ url_for('static', filename='img/crop-icon.png') }}" alt="Crop Icon" width="270">
+                            <p class="mt-3">Enter crop details on the left to get price predictions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

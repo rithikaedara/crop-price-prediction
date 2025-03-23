@@ -1,0 +1,74 @@
+/* style.css */
+body {
+    background-color: #b3e5fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    padding: 20px 0;
+    background-color: #f4f75c;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+.btn-success {
+    padding: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+}
+
+#insights {
+    height: 100%;
+    border-left: 4px solid #dcedc8;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    border-color: #a5d6a7;
+    color: #2e7d32;
+}
+
+canvas {
+    max-width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    
+    .col-md-5, .col-md-7 {
+        width: 100%;
+    }
+}
