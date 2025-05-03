@@ -31,11 +31,6 @@ A mini-project that predicts the price of agricultural crops based on input para
 	•Factor Importance Visualization
 	•Season-based Insights
 
- ![image](https://github.com/user-attachments/assets/dd1829eb-50c5-4dcb-957b-81982e2728dd)
- ![image](https://github.com/user-attachments/assets/526a4c39-161e-4c22-8151-5d671452959c)
- ![image](https://github.com/user-attachments/assets/a622e155-98eb-4191-b33f-b0baa79a37d3)
- ![image](https://github.com/user-attachments/assets/8123814a-6024-4ab2-b0fc-72b75e1415f2)
- ![image](https://github.com/user-attachments/assets/22662470-9cd0-4b7f-9078-5482bb0c67e6)
 
 
 
