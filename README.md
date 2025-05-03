@@ -1,5 +1,5 @@
-#Crop Price Prediction using Machine Learning
-
+**Crop Price Prediction using Machine Learning
+**
 A mini-project that predicts the price of agricultural crops based on input parameters such as crop name, region, season, rainfall, soil type, and market demand. It uses a machine learning model trained on historical data to provide price predictions and insights to help farmers and traders make better decisions.
 
 #Features
